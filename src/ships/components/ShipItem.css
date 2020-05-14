@@ -1,0 +1,54 @@
+.ship-item {
+    margin: 1rem 0;
+  }
+  
+  .ship-item__content {
+    padding: 0;
+  }
+  
+  .ship-item__info {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .ship-item__image {
+    width: 100%;
+    height: 12.5rem;
+    margin-right: 1.5rem;
+  }
+  
+  .ship-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .ship-item__info h2,
+  .ship-item__info h3,
+  .ship-item__info p {
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .ship-item__actions {
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #ccc;
+  }
+  
+  .ship-item__modal-content {
+    padding: 0;
+  }
+  
+  .ship-item__modal-actions {
+    text-align: right;
+  }
+  
+  .ship-item__actions button,
+  .ship-item__actions a {
+    margin: 0.5rem;
+  }
+  
+  .map-container {
+    height: 15rem;
+    width: 100%;
+  }

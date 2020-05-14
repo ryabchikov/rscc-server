@@ -1,0 +1,22 @@
+.input-field {
+    align-items: center;
+    display: block;
+    margin: auto;
+    width: 560px;
+    padding-bottom: 8px;
+  }
+  
+  .input-field textarea {
+    overflow: auto;
+    resize: vertical;
+  }
+  
+  .submit-satellite-button-box {
+    align-items: center;
+    display: block;
+    margin: auto;
+    width: 560px;
+    margin-top: 8px;
+    padding: 8px;
+  }
+  
