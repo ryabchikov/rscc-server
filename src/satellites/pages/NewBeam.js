@@ -6,9 +6,11 @@ import './NewSatellite.css'
 
 const NewBeam = (props) => {
   const [satellite, setSatellite] = useState("");
+  const [name, setName] = useState("");
   const [band, setBand] = useState("C");
+  const [fixed, setFixed] = useState(true);
   const [power, setPower] = useState("1");
-  const [coverage, setCoverage] = useState("");
+  const [coverage, setCoverage] = useState([]);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,10 +22,12 @@ const NewBeam = (props) => {
     fetchData();
   }, []);
 
-  console.log(data);
+  const onBandChangeHandler = (event) => {
+    setBand(event.target.value);
+  };
 
-  const onNewBeamSubmitHandler = (event) => {
-    console.log("submitted");
+  const onPowerChangeHandler = (event) => {
+    setPower(event.target.value);
   };
 
   const onCoverageChangeHandler = (event) => {
@@ -32,32 +36,83 @@ const NewBeam = (props) => {
 
   const onSatelliteChangeHandler = (event) => {
     setSatellite(event.target.value);
-    console.log(satellite)
   };
 
-  //   const onNewSatelliteSubmitHandler = () => {
-  //     const satellite = {
-  //       name: satelliteDescription,
-  //       position: {
-  //         degrees: degrees,
-  //         hemisphere: hemisphere
-  //       }
-  //     }
-  //     axios.put('/satellites/' + satelliteName + '.json', satellite)
-  //       .then(response => console.log(response))
-  //       .catch(error => console.log(error));
-  //   }
+  const onBeamNameChangeHandler = (event) => {
+    setName(event.target.value);
+  };
+
+  const onFixedChangeHandler = (event) => {
+    setFixed(event.target.value);
+  };
+
+  const onNewBeamSubmitHandler = () => {
+    const beam = {
+      id: satellite + name + band + power + "dB",
+      satellite: satellite,
+      name: name,
+      band: band,
+      power: power,
+      fixed: fixed
+    };
+    console.log(beam);
+    axios
+      .put("/beams/" + satellite + name + band + power + "dB.json", beam)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <React.Fragment>
-      <div className="center">
+      <div className="input-field">
         <label>
           Choose a Satellite
-          <select value={power} onChange={onSatelliteChangeHandler}>
-            {Object.values(data).map((satellite) => (
-              <option key={satellite.id} value={satellite.id}>{satellite.name}</option>
-              //   <SatelliteItem key={satellite.name} name={satellite.name} />
+          <select value={satellite} onChange={onSatelliteChangeHandler}>
+            {Object.values(data).map((sat) => (
+              <option key={sat.id} value={sat.id}>{sat.name}</option>
             ))}
+          </select>
+        </label>
+      </div>
+      <div className="input-field">
+        <label>
+          Set Beam Name:
+          <input  type="text" placeholder="Name" value={name} onChange={onBeamNameChangeHandler}/>
+        </label>
+      </div>
+      <div className="input-field">
+        <label>
+          Choose a band 
+          <select value={band} onChange={onBandChangeHandler}>
+            <option value="C">C-band</option>
+            <option value="Ku">Ku-band</option>
+            <option value="Ka">Ka-band</option>
+          </select>
+        </label>
+      </div>
+      <div className="input-field">
+        <label>
+          Choose if steerable 
+          <select value={fixed} onChange={onFixedChangeHandler}>
+            <option value={true}>Fixed</option>
+            <option value={false}>Steerable</option>
+          </select>
+        </label>
+      </div>
+      <div className="input-field">
+        <label>
+          Choose a power 
+          <select value={power} onChange={onPowerChangeHandler}>
+            <option value="1">1 dB</option>
+            <option value="2">2 dB</option>
+            <option value="3">3 dB</option>
+            <option value="4">4 dB</option>
+            <option value="5">5 dB</option>
+            <option value="6">6 dB</option>
+            <option value="7">7 dB</option>
+            <option value="8">8 dB</option>
+            <option value="9">9 dB</option>
+            <option value="10">10 dB</option>
           </select>
         </label>
       </div>

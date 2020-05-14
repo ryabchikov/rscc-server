@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Satellites from './satellites/pages/Satellites';
+import Beams from './satellites/pages/Beams';
 import NewSatellite from './satellites/pages/NewSatellite';
 import NewBeam from './satellites/pages/NewBeam';
 import Ships from './ships/pages/Ships';
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path="/satellites" exact>
           <Satellites />
+        </Route>
+        <Route path="/beams" exact>
+          <Beams />
         </Route>
         <Route path="/satellites/add/" exact>
           <NewSatellite />

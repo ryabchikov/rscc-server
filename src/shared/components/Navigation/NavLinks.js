@@ -13,6 +13,9 @@ const NavLinks = props => {
                 <NavLink to="/satellites" exact>Satellites</NavLink>
             </li>
             <li>
+                <NavLink to="/beams" exact>Beams</NavLink>
+            </li>
+            <li>
                 <NavLink to="/satellites/add" exact>NewSatellite</NavLink>
             </li>
             <li>
