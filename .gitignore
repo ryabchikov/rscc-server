@@ -11,6 +11,9 @@
 # production
 /build
 
+# private info
+/src/Beams
+
 # misc
 .DS_Store
 .env.local
